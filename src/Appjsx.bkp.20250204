@@ -1,0 +1,43 @@
+import {Component} from 'react'
+import Students from './components/Students'
+import HonorList from './components/HonorList'
+import Cmp01 from './components/Cmp01'
+class App extends Component {  
+  state = {
+    data : [
+      {id:1, name:'Osman', grade:10 , isHonor: true},
+      {id:2, name:'Perla', grade:11, isHonor: false},
+      {id:3, name:'Razan',grade:12, isHonor: false},
+      {id:4, name:'Maria',grade:13, isHonor: false},
+      {id:5, name:'Michel',grade:14, isHonor: true}
+  ]    
+  }
+
+  componentDidMount()
+  {
+    // alert('Took its place in the DOM')
+    // Call API to get data
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(json => console.log(json))
+  }
+
+  constructor()
+  {
+      super();
+
+      //alert('Ana el Student!!!!');
+  }
+  render()
+  {    
+    return (
+      <>  
+        <Cmp01 value= 'Full Stack Training with Rony Rizk'/>        
+        <HonorList AllData = {this.state.data.filter(x=>x.isHonor == true)} />
+        <Students  AllData = {this.state.data}/>        
+      </>
+    )
+  }  
+}
+
+export default App

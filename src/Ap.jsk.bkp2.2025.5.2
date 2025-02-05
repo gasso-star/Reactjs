@@ -1,0 +1,48 @@
+import { Component } from 'react';
+import Students from './components/Students';
+import HonorList from './components/HonorList';
+import Cmp01 from './components/Cmp01';
+
+class App extends Component {
+  state = {
+    data: [
+      { id: 1, name: 'Osman', grade: 10, isHonor: true },
+      { id: 2, name: 'Perla', grade: 11, isHonor: false },
+      { id: 3, name: 'Razan', grade: 12, isHonor: false },
+      { id: 4, name: 'Maria', grade: 13, isHonor: false },
+      { id: 5, name: 'Michel', grade: 14, isHonor: true },
+    ],
+  };
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ data: [] }, () => {
+        console.log('Data after clearing:', this.state.data);
+      });
+    }, 2000);
+  }
+
+  constructor() {
+    super();
+    //alert('Ana el Student!!!!');
+  }
+
+  // Method to clear data when button is clicked
+  clearData = () => {
+    this.setState({ data: [] });
+  };
+
+  render() {
+    return (
+      <>
+        <button onClick={this.clearData}>Clear Data</button>
+        <Cmp01 value="Full Stack Training with Rony Rizk" />
+        <HonorList AllData={this.state.data.filter((x) => x.isHonor === true)} />
+        <Students AllData={this.state.data} />
+        <div>Data length: {this.state.data.length}</div>
+      </>
+    );
+  }
+}
+
+export default App;
