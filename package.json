@@ -7,7 +7,11 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+<<<<<<< HEAD
     "start": "node ./reactJS101/1/api.js"
+=======
+    "start": "node reactJS101/1/api.js"
+>>>>>>> 73af4dc2a44616c488cca6617cf8d4bd34d4ff15
   },
   "dependencies": {
     "axios": "^1.7.9",
